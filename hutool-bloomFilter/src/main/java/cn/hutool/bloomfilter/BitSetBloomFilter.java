@@ -61,6 +61,7 @@ public class BitSetBloomFilter implements BloomFilter{
 	
 	@Override
 	public boolean add(String str) {
+		//已有该字符串则返回false
 		if (contains(str)) {
 			return false;
 		}
@@ -68,6 +69,7 @@ public class BitSetBloomFilter implements BloomFilter{
 		int[] positions = createHashes(str, hashFunctionNumber);
 		for (int i = 0; i < positions.length; i++) {
 			int position = Math.abs(positions[i] % bitSetSize);
+			//取模后放入set
 			bitSet.set(position, true);
 		}
 		return true;
@@ -102,10 +104,11 @@ public class BitSetBloomFilter implements BloomFilter{
 	 * 将字符串的字节表示进行多哈希编码.
 	 * 
 	 * @param str 待添加进过滤器的字符串字节表示.
-	 * @param hashNumber 要经过的哈希个数.
+	 * @param hashNumber 要经过的哈希个数.每次hash使用不同hash算法
 	 * @return 各个哈希的结果数组.
 	 */
 	public static int[] createHashes(String str, int hashNumber) {
+		//把str变成hashNumber位数组
 		int[] result = new int[hashNumber];
 		for(int i = 0; i < hashNumber; i++) {
 			result[i] = hash(str, i);

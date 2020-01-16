@@ -13,6 +13,7 @@ import net.sf.cglib.proxy.Enhancer;
 public class CglibProxyFactory extends ProxyFactory{
 	private static final long serialVersionUID = 1L;
 
+	//cglib创建代理类
 	@Override
 	@SuppressWarnings("unchecked")
 	public <T> T proxy(T target, Aspect aspect) {

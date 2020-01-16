@@ -19,6 +19,10 @@ public class BitMapBloomFilterTest {
 		Assert.assertTrue(filter.contains("abc"));
 		Assert.assertTrue(filter.contains("ddd"));
 		Assert.assertTrue(filter.contains("123"));
+		long l=0L;
+		int c =11;
+		l = l | (1 << c);
+		System.out.println(l);
 	}
 
 	@Test

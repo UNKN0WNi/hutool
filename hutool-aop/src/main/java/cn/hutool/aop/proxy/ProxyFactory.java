@@ -34,6 +34,7 @@ public abstract class ProxyFactory implements Serializable{
 	 * @return 代理对象
 	 */
 	public static <T> T createProxy(T target, Class<? extends Aspect> aspectClass){
+		//反射获取一个传入切面类对象
 		return createProxy(target, ReflectUtil.newInstance(aspectClass));
 	}
 
@@ -46,6 +47,7 @@ public abstract class ProxyFactory implements Serializable{
 	 * @return 代理对象
 	 */
 	public static <T> T createProxy(T target, Aspect aspect) {
+		//proxy调用返回的具体代理工厂的proxy，即jdk/cglib的不同代理实现
 		return create().proxy(target, aspect);
 	}
 
@@ -56,6 +58,7 @@ public abstract class ProxyFactory implements Serializable{
 	 */
 	public static ProxyFactory create() {
 		try {
+			//如果引入了cglib返回cglib代理工厂
 			return new CglibProxyFactory();
 		} catch (NoClassDefFoundError e) {
 			// ignore

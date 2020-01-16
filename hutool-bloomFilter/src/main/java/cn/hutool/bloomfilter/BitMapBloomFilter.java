@@ -12,7 +12,7 @@ import cn.hutool.core.util.NumberUtil;
  * 1.构建hash算法 <br>
  * 2.散列hash映射到数组的bit位置 <br>
  * 3.验证<br>
- * 此实现方式可以指定Hash算法
+ * ！！！！此实现方式可以指定Hash算法（指定Filter extends AbstractFilter）
  * 
  * @author Ansj
  */
@@ -69,6 +69,7 @@ public class BitMapBloomFilter implements BloomFilter{
 	 */
 	@Override
 	public boolean contains(String str) {
+		//n个过滤器，如果有一个找不到说明str不在该BitMapBloomFilter中
 		for (BloomFilter filter : filters) {
 			if (filter.contains(str) == false) {
 				return false;

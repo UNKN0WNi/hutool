@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
  *
  * @author Looly
  */
+//代理类需要继承SimpleAspect，重写相关方法
 public class TimeIntervalAspect extends SimpleAspect {
 	private static final long serialVersionUID = 1L;
 

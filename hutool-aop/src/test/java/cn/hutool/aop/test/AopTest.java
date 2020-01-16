@@ -25,6 +25,7 @@ public class AopTest {
 	@Test
 	public void aopByCglibTest() {
 		Dog dog = ProxyUtil.proxy(new Dog(), TimeIntervalAspect.class);
+		//dog已经是代理类
 		String result = dog.eat();
 		Assert.assertEquals("狗吃肉", result);
 		dog.seize();

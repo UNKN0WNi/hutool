@@ -16,6 +16,7 @@ public class LongMap implements BitMap, Serializable {
 	/**
 	 * 构造
 	 */
+	//足够大
 	public LongMap() {
 		longs = new long[93750000];
 	}
@@ -33,6 +34,7 @@ public class LongMap implements BitMap, Serializable {
 	public void add(long i) {
 		int r = (int) (i / BitMap.MACHINE64);
 		long c = i % BitMap.MACHINE64;
+		//
 		longs[r] = longs[r] | (1 << c);
 	}
 
